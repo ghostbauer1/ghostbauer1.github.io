@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pedro - Emprendedor y Automatizador</title>
   <style>
+    /* Variables de color灵感 */
     :root {
-      --primary: #2563eb;       /* Azul principal */
-      --primary-dark: #1d4ed8;  /* Azul oscuro para hover */
-      --bg: #f8fafc;            /* Fondo claro */
-      --card-bg: #ffffff;       /* Fondo tarjetas */
-      --text: #1e293b;          /* Texto principal */
-      --text-muted: #64748b;    /* Texto secundario */
+      --dark-blue:   #1e3a8a;   /* Azul oscuro principal */
+      --light-blue:  #3b82f6;   /* Azul claro (acentos) */
+      --pink:        #ec4899;   /* Rosa (highlight) */
+      --bg-dark:     #0f172a;   /* Fondo oscuro */
+      --bg-card:     #1e293b;   /* Fondo tarjeta */
+      --text-light:  #f1f5f9;   /* Texto claro */
+      --text-muted:  #94a3b8;   /* Texto secundario */
+      --radius:      12px;
+      --shadow:      0 10px 15px -3px rgba(0,0,0,0.2);
     }
 
     * {
@@ -21,21 +25,20 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       line-height: 1.6;
-      color: var(--text);
-      background-color: var(--bg);
     }
 
     /* Header */
     header {
-      background: var(--primary);
-      color: white;
+      background: var(--dark-blue);
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
     }
 
     nav {
@@ -49,9 +52,14 @@
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 1px;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--pink);
     }
 
     .nav-links {
@@ -61,14 +69,14 @@
     }
 
     .nav-links a {
-      color: white;
+      color: #e2e8f0;
       text-decoration: none;
       font-weight: 500;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      opacity: 0.8;
+      color: var(--pink);
     }
 
     /* Main */
@@ -79,163 +87,250 @@
     }
 
     section {
-      margin-bottom: 3rem;
-      background: var(--card-bg);
+      margin-bottom: 4rem;
+      background: var(--bg-card);
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     h1, h2, h3 {
-      color: var(--primary-dark);
+      color: white;
       margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--light-blue);
     }
 
     p {
-      margin-bottom: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
     }
 
+    /* Hero illustration placeholder */
+    .hero-illustration {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, var(--dark-blue), var(--light-blue));
+      border-radius: var(--radius);
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-illustration::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--pink) 0%, transparent 60%);
+      opacity: 0.15;
+      animation: pulse 8s infinite alternate;
+    }
+
+    @keyframes pulse {      
+      0% { transform: scale(0.8); }
+      100% { transform: scale(1.2); }
+    }
+
+    .hero-illustration span {
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      z-index: 1;
+    }
+
+    /* Projects grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
     }
 
     .project-card {
-      background: var(--bg);
+      background: rgba(255,255,255,0.05);
       padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
     }
 
     .project-card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary);
+      color: var(--light-blue);
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
     }
 
+    .project-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-card .tag {
+      display: inline-block;
+      background: var(--pink);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    /* Contact form */
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.875rem;
       margin-bottom: 1rem;
-      border: 1px solid #cbd5e1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 6px;
+      color: white;
       font-family: inherit;
     }
 
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: var(--text-muted);
+    }
+
     .contact-form button {
-      background: var(--primary);
+      background: var(--light-blue);
       color: white;
       border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
+      padding: 0.875rem 1.75rem;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.2s;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.1s;
     }
 
     .contact-form button:hover {
-      background: var(--primary-dark);
+      background: var(--pink);
+      transform: translateY(-2px);
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem;
       color: var(--text-muted);
       font-size: 0.9rem;
-      background: var(--card-bg);
+      background: var(--bg-card);
       margin-top: 2rem;
     }
 
+    footer a {
+      color: var(--light-blue);
+      text-decoration: none;
+    }
+
     /* Responsive */
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-      }
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.75rem; }
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
       }
+      section { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
+  <!-- Header con logo y menú -->
   <header>
     <nav>
-<div class="logo">GHOST</div>
+      <div class="logo">GHOST<span>BAUER</span></div>
       <ul class="nav-links">
         <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- Inicio -->
+    <!-- Hero Section -->
     <section id="inicio">
-      <h1>Hola, soy Pedro</h1>
-      <p>Emprendedor, automatizador y apasionado de la tecnología. Mi objetivo es crear flujos de trabajo que ahorren tiempo y permitan monetizar ideas innovadoras.</p>
+      <h1>Emprendimiento & Automatización</h1>
+      <p>Desarrollo workflows que permiten escalar negocios y liberar tiempo. Mi misión: transformar ideas en sistemas automáticos que generan ingresos.</p>
+      <div class="hero-illustration">
+        <span>🚀 Automatiza, No Repitas</span>
+      </div>
+      <p>Actualmente trabajando en un canal de YouTube automatizado, un ecommerce de dropshipping y servicios de automatización para pequeñas empresas.</p>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos">
+      <h2>Proyectos en Marcha</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>📺 YouTube Automático</h3>
+                    <p>Generación de contenido con IA, edición automática y publicación programada. Monetización con AdSense y afiliación.</p>
+          <span class="tag">En desarrollo</span>
+        </div>
+        <div class="project-card">
+          <h3>🛒 Dropshipping AI</h3>
+          <p>Tienda conectada a proveedores con importación de productos automática, seguimiento de inventario y gestión de pedidos.</p>
+          <span class="tag">Beta</span>
+        </div>
+        <div class="project-card">
+          <h3>🤖 Asistente Personal (Paco)</h3>
+          <p>Bot en Telegram que maneja recordatorios, bases de datos y tareas repetitivas. Integrado con Google Sheets y OpenRouter.</p>
+          <span class="tag">Activo</span>
+        </div>
+        <div class="project-card">
+          <h3>📊 Colección Pokémon Digital</h3>
+          <p>Sistema de escaneo de cartas con visión artificial (Gemini) y almacenamiento en hoja de cálculo con precios de mercado.</p>
+          <span class="tag">Planificación</span>
+        </div>
+      </div>
     </section>
 
     <!-- Sobre mí -->
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
-      <p>Tengo un trabajo a tiempo completo (40h/semana) y dedico mi tiempo libre a construir automatizaciones y proyectos que generen ingresos:</p>
-      <ul>
-        <li>Canal de YouTube automatizado</li>
-        <li>Ecommerce con dropshipping</li>
-        <li>Servicios de automatización para empresas</li>
-      </ul>
-      <p>Me encanta planificar, probar y mejorar iterativamente. Mi frase: "Si se puede automatizar, se debe automatizar".</p>
-    </section>
-
-    <!-- Proyectos -->
-    <section id="proyectos">
-      <h2>Proyectos en marcha</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3>📺 YouTube Automático</h3>
-          <p>Un canal que genera contenido con IA y lo publica automáticamente. Ingresos por anuncios y afiliación.</p>
-        </div>
-        <div class="project-card">
-          <h3>🛒 Dropshipping Store</h3>
-          <p>Tienda online con importación de productos automatizada y gestión de inventario en tiempo real.</p>
-        </div>
-        <div class="project-card">
-          <h3>🤖 Asistente Personal</h3>
-          <p>Mi propio bot (Paco) que me ayuda con recordatorios, bases de datos y tareas repetitivas.</p>
-        </div>
-        <div class="project-card">
-          <h3>📊 Base de Datos Pokémon</h3>
-          <p>Sistema para escanear cartas con fotos y almacenarlas en Google Sheets, con precios y estadísticas.</p>
-        </div>
-      </div>
+      <p>Soy Pedro, trabajador a tiempo completo que emprende en sus ratos libres. Creo que la tecnología debe servir para liberar tiempo, no para consumirlo.</p>
+      <p>Mi metodología: <strong>planificar → probar → replanificar → probar</strong>. Itero rápido y aprendo de los errores.</p>
+      <p>Cuando no estoy programando automatizaciones, juego Pokémon (de ahí la idea del escáner de cartas) o experimento con nuevos modelos de IA.</p>
     </section>
 
     <!-- Contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>¿Quieres colaborar o tienes alguna pregunta? Escríbeme:</p>
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te responderé pronto.');">
+      <p>¿Colaboración, preguntas o simplemente saludar? Escríbeme:</p>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Gracias! Te responderé pronto.');">
         <input type="text" placeholder="Tu nombre" required>
         <input type="email" placeholder="Tu email" required>
-        <textarea rows="4" placeholder="Tu mensaje" required></textarea>
-        <button type="submit">Enviar</button>
+        <textarea rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
+        <button type="submit">Enviar mensaje</button>
       </form>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Pedro. Página creada con <a href="https://pages.github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a>.</p>
+    <p>&copy; 2025 Pedro. Creado con <a href="https://pages.github.com" target="_blank">GitHub Pages</a> y mucho café.</p>
   </footer>
 </body>
 </html>
