@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos - Pedro</title>
+  <style>
+    :root {
+      --dark-blue:   #1e3a8a;
+      --light-blue:  #3b82f6;
+      --pink:        #ec4899;
+      --bg-dark:     #0f172a;
+      --bg-card:     #1e293b;
+      --text-light:  #f1f5f9;
+      --text-muted:  #94a3b8;
+      --radius:      12px;
+      --shadow:      0 10px 15px -3px rgba(0,0,0,0.2);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--dark-blue);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo { font-size: 1.75rem; font-weight: 800; color: white; letter-spacing: -0.5px; }
+    .logo span { color: var(--pink); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #e2e8f0; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--pink); }
+    main { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+    section { margin-bottom: 4rem; background: var(--bg-card); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+    h1, h2, h3 { color: white; margin-bottom: 1rem; line-height: 1.2; }
+    h1 { font-size: 2.5rem; font-weight: 800; }
+    h2 { font-size: 2rem; color: var(--light-blue); }
+    p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .project-card { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.1); transition: transform 0.2s, box-shadow 0.2s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .project-card h3 { color: var(--light-blue); margin-bottom: 0.75rem; font-size: 1.25rem; }
+    .project-card p { font-size: 0.95rem; margin-bottom: 1rem; }
+    .project-card .tag { display: inline-block; background: var(--pink); color: white; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: bold; }
+    footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem; background: var(--bg-card); margin-top: 2rem; }
+    footer a { color: var(--light-blue); text-decoration: none; }
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.75rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+      section { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">GHOST<span>BAUER</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="sobre-mi.html">Sobre mÃ­</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="proyectos">
+      <h1>Proyectos</h1>
+      <p>Estos son mis proyectos en desarrollo. Cada uno representa un distinto Ã¡rea de automatizaciÃ³n y emprendimiento.</p>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>ðŸ“º YouTube AutomÃ¡tico</h3>
+          <p>Un canal que genera contenido con IA, edita videos automÃ¡ticamente y publica segÃºn schedule. MonetizaciÃ³n con AdSense y enlaces de afiliaciÃ³n.</p>
+          <span class="tag">En desarrollo</span>
+        </div>
+        <div class="project-card">
+          <h3>ðŸ›’ Dropshipping AI</h3>
+          <p>Tienda online conectada a proveedores vÃ­a API. ImportaciÃ³n automÃ¡tica de productos, seguimiento de inventario y gestiÃ³n de pedidos sin intervenciÃ³n manual.</p>
+          <span class="tag">Beta</span>
+        </div>
+        <div class="project-card">
+          <h3>ðŸ¤– Asistente Personal (Paco)</h3>
+          <p>Bot en Telegram que maneja recordatorios, bases de datos y tareas repetitivas. Integrado con Google Sheets y OpenRouter para mÃºltiples modelos de IA.</p>
+          <span class="tag">Activo</span>
+        </div>
+        <div class="project-card">
+          <h3>ðŸ“Š Base de Datos PokÃ©mon</h3>
+          <p>Sistema de escaneo de cartas usando visiÃ³n artificial (Gemini) y almacenamiento en hojas de cÃ¡lculo con precios de mercado actualizados automÃ¡ticamente.</p>
+          <span class="tag">PlanificaciÃ³n</span>
+        </div>
+        <div class="project-card">
+          <h3>ðŸ“… AutomatizaciÃ³n de Recordatorios</h3>
+          <p>Servicio que recuerda cumpleaÃ±os y santos de familiares/amigos, enviando notificaciones por Telegram con dÃ­as de antelaciÃ³n.</p>
+          <span class="tag">PrÃ³ximo</span>
+        </div>
+        <div class="project-card">
+          <h3>ðŸ¤ Servicios de AutomatizaciÃ³n</h3>
+          <p>Ofrezco a pequeÃ±as empresas la creaciÃ³n de workflows que ahorran tiempo: desde scrapers hasta bots de atenciÃ³n al cliente.</p>
+          <span class="tag">Ingresos</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Pedro. Creado con <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.</p>
+  </footer>
+</body>
+</html>
